@@ -1,0 +1,24 @@
+{
+  "name": "science-shooter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacklee5/science-shooter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacklee5/science-shooter/issues"
+  },
+  "homepage": "https://github.com/jacklee5/science-shooter#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
