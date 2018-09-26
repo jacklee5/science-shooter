@@ -372,7 +372,12 @@ app.renderEvent.on(function () {
 
 var question = 'What is element 113?'
 document.getElementById('draw_question').innerHTML = question;
+var current_answer;
 
-function changeQuestion(new_question) {
-    document.getElementById('draw_question').innerHTML = new_question;
+function changeQuestion() {
+    current_question = Math.floor(Math.random * QUESTIONS.length)
+    document.getElementById('draw_question').innerHTML = QUESTIONS[current_question].questions;
+    var current_answer = QUESTIONS[current_question].answer;
 }
+
+changeQuestion();
