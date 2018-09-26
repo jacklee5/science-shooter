@@ -6,7 +6,7 @@
 // rather than in response to animation or other updates.  
 
 // The original example is in the original-three-example.html file in this directory
-  
+
 var tableContent = [
   [ "H", "Hydrogen", "1.00794", 1, 1 ],
   [ "He", "Helium", "4.002602", 18, 1 ],
@@ -491,3 +491,10 @@ app.renderEvent.on(function () {
         hud.render(_i);
     }
 });
+
+var question = 'What is element 113?'
+document.getElementById('draw_question').innerHTML = question;
+
+function changeQuestion(new_question) {
+    document.getElementById('draw_question').innerHTML = new_question;
+}
