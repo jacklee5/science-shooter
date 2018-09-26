@@ -137,20 +137,6 @@ var periodicTable, stage;
 var objects = [];
 var targets = { table: [], sphere: [], helix: [], grid: [] };
 
-// In a typical threejs example, the camera doesn't move and is controlled by the 
-// mouse.  We do not need that here.  Furthermore, our domElement for rendering is 
-// coordinated by argon to match the user's prefered rendering setup
-
-//   renderer = new THREE.CSS3DRenderer();
-//   renderer.setSize( window.innerWidth, window.innerHeight );
-//   renderer.domElement.style.position = 'absolute';
-//   renderer.domElement.style.top = 0;
-//   document.getElementById( 'container' ).appendChild( renderer.domElement );
-//
-//   controls = new THREE.TrackballControls( camera, renderer.domElement );
-//   controls.rotateSpeed = 0.5;
-//   controls.addEventListener( 'change', render );
-
 // In argon, we use a custom version of the CSS3DRenderer called CSS3DArgonRenderer.
 // This version of the renderer supports stereo in a way that fits with Argon's renderEvent,
 // especially supporting the user providing multiple divs for the potential multiple viewports
@@ -207,27 +193,31 @@ function init() {
 
     var item = tableContent[ i ];
 
-    var element = document.createElement( 'div' );
-    element.className = 'element';
-    element.style.backgroundColor = 'rgba(0,127,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+    // var element = document.createElement( 'div' );
+    // element.className = 'element';
+    // element.style.backgroundColor = 'rgba(0,127,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
 
-    // if it's Argon make it bright red
-    if (i==17) element.style.backgroundColor = 'rgba(127,0,0,1)';
+    // // if it's Argon make it bright red
+    // if (i==17) element.style.backgroundColor = 'rgba(127,0,0,1)';
 
-    var number = document.createElement( 'div' );
-    number.className = 'number';
-    number.textContent = i + 1;
-    element.appendChild( number );
+    // var number = document.createElement( 'div' );
+    // number.className = 'number';
+    // number.textContent = i + 1;
+    // element.appendChild( number );
 
-    var symbol = document.createElement( 'div' );
-    symbol.className = 'symbol';
-    symbol.textContent = item[ 0 ];
-    element.appendChild( symbol );
+    // var symbol = document.createElement( 'div' );
+    // symbol.className = 'symbol';
+    // symbol.textContent = item[ 0 ];
+    // element.appendChild( symbol );
 
-    var details = document.createElement( 'div' );
-    details.className = 'details';
-    details.innerHTML = item[ 1 ] + '<br>' + item[ 2 ];
-    element.appendChild( details );
+    // var details = document.createElement( 'div' );
+    // details.className = 'details';
+    // details.innerHTML = item[ 1 ] + '<br>' + item[ 2 ];
+    // element.appendChild( details );
+
+    let element = document.createElement("div");
+    element.className = "answer";
+    element.textContent = "Hello world!"
 
     var object = new THREE.CSS3DObject( element );
     object.position.x = Math.random() * 4000 - 2000;
@@ -319,31 +309,28 @@ function init() {
   var hudContainer = document.getElementById( 'hud' );
   hud.hudElements[0].appendChild(hudContainer);
 
-  // Add button event listeners
-  var button = document.getElementById( 'table' );
-  button.addEventListener( 'click', function ( event ) {
-    transform( targets.table, 2000 );
-  }, false );
+  // // Add button event listeners
+  // var button = document.getElementById( 'table' );
+  // button.addEventListener( 'click', function ( event ) {
+  //   transform( targets.table, 2000 );
+  // }, false );
 
-  var button = document.getElementById( 'sphere' );
-  button.addEventListener( 'click', function ( event ) {
-    transform( targets.sphere, 2000 );
-  }, false );
+  // var button = document.getElementById( 'sphere' );
+  // button.addEventListener( 'click', function ( event ) {
+  //   transform( targets.sphere, 2000 );
+  // }, false );
 
-  var button = document.getElementById( 'helix' );
-  button.addEventListener( 'click', function ( event ) {
-    transform( targets.helix, 2000 );
-  }, false );
+  // var button = document.getElementById( 'helix' );
+  // button.addEventListener( 'click', function ( event ) {
+  //   transform( targets.helix, 2000 );
+  // }, false );
 
-  var button = document.getElementById( 'grid' );
-  button.addEventListener( 'click', function ( event ) {
-    transform( targets.grid, 2000 );
-  }, false );
+  // var button = document.getElementById( 'grid' );
+  // button.addEventListener( 'click', function ( event ) {
+  //   transform( targets.grid, 2000 );
+  // }, false );
 
-  transform( targets.table, 5000 );
-
-  // do not need to respond to windowResize events.  Argon handles this for us
-  //    window.addEventListener( 'resize', onWindowResize, false );
+  transform( targets.sphere, 5000 );
 
 }
 
