@@ -1,36 +1,82 @@
+html, body {
+	height: 100%;
+}
+
 body {
+	margin: 0;
 	font-family: Arial;
+	overflow: hidden;
 }
 
 a {
 	color: #ffffff;
 }
 
-.menu {
+#menu {
 	position: absolute;
-	bottom: 0;
+	bottom: 50px;
 	width: 100%;
 	text-align: center;
-    pointer-events: none;
+}
+
+.element {
+	width: 120px;
+	height: 160px;
+/*	box-shadow: 0px 0px 20px rgba(0,255,255,0.5); */
+	border: 1px solid rgba(127,255,255,0.25);
+	cursor: default;
+}
+
+.element:hover {
+/*		box-shadow: 0px 0px 20px rgba(0,255,255,0.75); */
+	border: 1px solid rgba(127,255,255,1);
+}
+
+.element .number {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: 12px;
+	color: rgba(127,255,255,0.75);
+}
+
+.element .symbol {
+	position: absolute;
+	top: 40px;
+	width: 100%;
+	font-size: 60px;
+	text-align: center;
+	color: rgba(255,255,255,0.75);
+	font-weight: bold;
+}
+
+.element .details {
+	position: absolute;
+	bottom: 15px;
+	width: 100%;
+	font-size: 12px;
+	text-align: center;
+	color: rgba(127,255,255,0.75);
 }
 
 button {
-	color: white;
-	background: rgba(27,55,55,0.75);;
+	color: rgba(127,255,255,0.75);
+	background: transparent;
 	outline: 1px solid rgba(127,255,255,0.75);
 	border: 0px;
-	margin-bottom: 20px;
 	padding: 5px 10px;
 	cursor: pointer;
 }
-
 button:hover {
 	background-color: rgba(0,255,255,0.5);
 }
-
 button:active {
 	color: #000000;
 	background-color: rgba(0,255,255,0.75);
+}
+
+iframe {
+	z-index: -1000;
 }
 
 #description {
@@ -43,18 +89,18 @@ button:active {
   bottom: 0px;
 }
 
-.argon-focus #menu {
+.argon-focus #hud {
   transition: opacity 0.8s;
   visibility: visible;
   opacity: 1; 
 }
 
-.argon-no-focus #menu {
+.argon-no-focus #hud {
   transition: visibility 0s linear 0.8s, opacity 0.8s;
   visibility: visible;
   opacity: 0;
 }
 
 #hud {
-  pointer-events: auto;
+	pointer-events: auto;
 }
