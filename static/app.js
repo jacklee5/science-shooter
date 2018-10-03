@@ -9,23 +9,23 @@
 
 const MAX_ANSWERS = 20;
 const QUESTIONS = [
-  {question: "admase", answer: "ascmask"},
-  {question: "admadse", answer: "ascmask"},
-  {question: "admdase", answer: "ascmask"},
-  {question: "admadcdse", answer: "ascmask"},
-  {question: "admadasddse", answer: "ascmask"},
-  {question: "admase", answer: "ascmask"},
-  {question: "addadcsdmase", answer: "ascmask"},
-  {question: "admsdase", answer: "ascmask"},
-  {question: "admasase", answer: "ascmask"},
-  {question: "admaasdase", answer: "ascmask"},
-  {question: "adsmaese", answer: "ascmask"},
-  {question: "admase", answer: "ascmask"},
-  {question: "admase", answer: "ascmask"},
-  {question: "adadasdmase", answer: "ascmask"},
-  {question: "adsdcmase", answer: "ascmask"},
-  {question: "admfadssaase", answer: "ascmask"},
-  {question: "adamase", answer: "ascmask"}
+  {question: "admase", answer: "0ascmask"},
+  {question: "admadse", answer: "a1scmask"},
+  {question: "admdase", answer: "a2scmask"},
+  {question: "admadcdse", answer: "a3scmask"},
+  {question: "admadasddse", answer: "a4scmask"},
+  {question: "admase", answer: "a5scmask"},
+  {question: "addadcsdmase", answer: "a6scmask"},
+  {question: "admsdase", answer: "a7scmask"},
+  {question: "admasase", answer: "a8scmask"},
+  {question: "admaasdase", answer: "a9scmask"},
+  {question: "adsmaese", answer: "a10scmask"},
+  {question: "admase", answer: "a11scmask"},
+  {question: "admase", answer: "a12scmask"},
+  {question: "adadasdmase", answer: "a13scmask"},
+  {question: "adsdcmase", answer: "a14scmask"},
+  {question: "admfadssaase", answer: "a15scmask"},
+  {question: "adamase", answer: "a16scmask"}
 ];
 
 var tableContent = [
@@ -208,66 +208,79 @@ window.addEventListener( 'load', init );
 //    animate();
 
 function init() {
-  // some of the exact locations of content below have been changed slightly from the original
-  // example so that they work reasonably on smaller mobile phone screens.
-  for ( var i = 0; i < tableContent.length; i ++ ) {
+//  // some of the exact locations of content below have been changed slightly from the original
+//  // example so that they work reasonably on smaller mobile phone screens.
+//  for ( var i = 0; i < tableContent.length; i ++ ) {
+//
+//    var item = tableContent[ i ];
+//
+//    // var element = document.createElement( 'div' );
+//    // element.className = 'element';
+//    // element.style.backgroundColor = 'rgba(0,127,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+//
+//    // // if it's Argon make it bright red
+//    // if (i==17) element.style.backgroundColor = 'rgba(127,0,0,1)';
+//
+//    // var number = document.createElement( 'div' );
+//    // number.className = 'number';
+//    // number.textContent = i + 1;
+//    // element.appendChild( number );
+//
+//    // var symbol = document.createElement( 'div' );
+//    // symbol.className = 'symbol';
+//    // symbol.textContent = item[ 0 ];
+//    // element.appendChild( symbol );
+//
+//    // var details = document.createElement( 'div' );
+//    // details.className = 'details';
+//    // details.innerHTML = item[ 1 ] + '<br>' + item[ 2 ];
+//    // element.appendChild( details );
+//
+//    //let element = document.createElement("div");
+//    element.className = "answer";
+//    element.textContent = "Hello world!"
+//
+//    var object = new THREE.CSS3DObject( element );
+//    object.position.x = Math.random() * 4000 - 2000;
+//    object.position.y = Math.random() * 4000 - 2000;
+//    object.position.z = Math.random() * 4000 - 2000;
+//    THREE.SceneUtils.traverseHierarchy( object, function ( object ) { object.visible = false; } );
+//    //object.matrixAutoUpdate = false;
+//    objects.push( object0 );
+//
+//    // Add each object our root node
+//    periodicTable.add(object);
+//  }
+//
+//  // table
+//
+//  for ( var i = 0; i < objects.length; i ++ ) {
+//
+//    var item = tableContent[ i ];
+//
+//    var target = new THREE.Object3D();
+//
+//    target.position.x = ( item[ 3 ] * 140 ) - 1330;
+//    target.position.y = - ( item[ 4 ] * 180 ) + 990;
+//    target.position.z = - 1000;
+//
+//    targets.table.push( target );
+//
+//  }
 
-    var item = tableContent[ i ];
-
-    // var element = document.createElement( 'div' );
-    // element.className = 'element';
-    // element.style.backgroundColor = 'rgba(0,127,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
-
-    // // if it's Argon make it bright red
-    // if (i==17) element.style.backgroundColor = 'rgba(127,0,0,1)';
-
-    // var number = document.createElement( 'div' );
-    // number.className = 'number';
-    // number.textContent = i + 1;
-    // element.appendChild( number );
-
-    // var symbol = document.createElement( 'div' );
-    // symbol.className = 'symbol';
-    // symbol.textContent = item[ 0 ];
-    // element.appendChild( symbol );
-
-    // var details = document.createElement( 'div' );
-    // details.className = 'details';
-    // details.innerHTML = item[ 1 ] + '<br>' + item[ 2 ];
-    // element.appendChild( details );
-
-    let element = document.createElement("div");
+    for(var i = 0; i < MAX_ANSWERS; i++){
+    var element = document.createElement("div");
     element.className = "answer";
-    element.textContent = "Hello world!"
+    element.textContent = "Hello world!";
 
     var object = new THREE.CSS3DObject( element );
-    object.position.x = Math.random() * 4000 - 2000;
-    object.position.y = Math.random() * 4000 - 2000;
-    object.position.z = Math.random() * 4000 - 2000;
-    THREE.SceneUtils.traverseHierarchy( object, function ( object ) { object.visible = false; } );
-    //object.matrixAutoUpdate = false;
+    object.position.x = 0;
+    object.position.y = 0;
+    object.position.z = 0;
     objects.push( object );
 
-    // Add each object our root node
     periodicTable.add(object);
   }
-
-  // table
-
-  for ( var i = 0; i < objects.length; i ++ ) {
-
-    var item = tableContent[ i ];
-
-    var target = new THREE.Object3D();
-
-    target.position.x = ( item[ 3 ] * 140 ) - 1330;
-    target.position.y = - ( item[ 4 ] * 180 ) + 990;
-    target.position.z = - 1000;
-
-    targets.table.push( target );
-
-  }
-
   // sphere
 
   var vector = stage.position;
@@ -501,14 +514,59 @@ app.renderEvent.on(function () {
     }
 });
 
-var question = 'What is element 113?'
-document.getElementById('draw_question').innerHTML = question;
-var current_answer;
-
-function changeQuestion() {
-    current_question = Math.floor(Math.random * QUESTIONS.length)
-    document.getElementById('draw_question').innerHTML = QUESTIONS[current_question].questions;
-    var current_answer = QUESTIONS[current_question].answer;
-}
+//var question = 'What is element 113?'
+//document.getElementById('draw_question').innerHTML = question;
+//var current_answer
 
 changeQuestion();
+
+function changeQuestion() {
+    var current_question = Math.floor(Math.random() * QUESTIONS.length);
+    document.getElementById('draw_question').innerHTML = QUESTIONS[current_question].question;
+    var current_answer = QUESTIONS[current_question].answer;
+    var wrong1 = -1;
+    var wrong2 = -1;
+    var wrong3 = -1;
+
+    wrong1 = Math.floor(Math.random() * (QUESTIONS.length - 1));
+    if (wrong1 >= current_answer) {
+        wrong1++;
+    } 
+    
+    wrong2 = Math.floor(Math.random() * (QUESTIONS.length - 2));
+    if (wrong2 >= current_answer) {
+        wrong2++;
+    } 
+    if (wrong2 >= wrong1) {
+        wrong2++;
+    } 
+    
+    wrong3 = Math.floor(Math.random() * (QUESTIONS.length - 3));
+    if (wrong3 >= current_answer) {
+        wrong2++;
+    } 
+    if (wrong3 >= wrong1) {
+        wrong3++;
+    } 
+    if (wrong3 >= wrong2) {
+        wrong3++;
+    } 
+
+    var wrong1 = QUESTIONS[wrong1].answer;
+    var wrong2 = QUESTIONS[wrong2].answer;
+    var wrong3 = QUESTIONS[wrong3].answer;
+    
+    console.log(current_answer);
+    console.log(wrong1);
+    console.log(wrong2);
+    console.log(wrong3);
+    
+    quest
+}
+    
+    
+    
+    
+    
+    
+    
