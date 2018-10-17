@@ -4,15 +4,46 @@
 
 // The original example is in the original-three-example.html file in this directory
 
+//menu stuff
+var SETS = {
+  "set1": [
+    {question: "What is the only non-metal element that is liquid at room temperature?", answer: "Bromine"},
+    {question: "What is the only metal element that is liquid at room temperature?", answer: "Mercury"},
+    {question: "What noble gas has the least amount of protons?", answer: "Helium"},
+    {question: "What element has 82 protons?", answer: "Lead"},
+    {question: "What alkaline earth metal is most likely to have an atom with 13 neutrons?", answer: "Magnesium"}
+  ],
+  "set2":[
+    {question: "not implemented!", answer: "also not implemented"}
+  ]
+};
+var QUESTIONS = [];
+
+(() => {
+  var helpButton = document.getElementById("help-button");
+  var playButton = document.getElementById("play-button");
+  var backButton = document.getElementById("back-button");
+  var startMenu = document.getElementById("start-menu");
+  var p1 = document.getElementById("p1");
+  var p2 = document.getElementById("p2");
+  helpButton.addEventListener("click", () => {
+    p1.style.display = "none";
+    p2.style.display = "block";
+  });
+  backButton.addEventListener("click", () => {
+    p1.style.display = "block";
+    p2.style.display = "none";
+  });
+  playButton.addEventListener("click", () => {
+    var setSelect = document.getElementById("set-select");
+    QUESTIONS = SETS[setSelect.options[setSelect.selectedIndex].value];
+    console.log(QUESTIONS);
+    changeQuestion();
+    startMenu.style.display = "none";
+  })
+})();
 
 var MAX_ANSWERS = 5;
-var QUESTIONS = [
-  {question: "What is the only non-metal element that is liquid at room temperature?", answer: "Bromine"},
-  {question: "What is the only metal element that is liquid at room temperature?", answer: "Mercury"},
-  {question: "What noble gas has the least amount of protons?", answer: "Helium"},
-  {question: "What element has 82 protons?", answer: "Lead"},
-  {question: "What alkaline earth metal is most likely to have an atom with 13 neutrons?", answer: "Magnesium"}
-]
 
 // set up Argon
 var app = Argon.init();
@@ -239,7 +270,6 @@ app.updateEvent.on(function () {
     TWEEN.update();  
 
     let dir = camera.getWorldDirection();
-    console.log(dir.x + ", " + dir.y + ", " + dir.z);
 });
 
 // for the CSS renderer, we want to use requestAnimationFrame to 
@@ -302,6 +332,7 @@ app.renderEvent.on(function () {
 
 
 function changeQuestion() {
+    if(QUESTIONS.length === 0) return;
     var current_question = Math.floor(Math.random() * QUESTIONS.length);
     document.getElementById('draw_question').innerHTML = QUESTIONS[current_question].question;
     var current_answer = QUESTIONS[current_question].answer;
