@@ -1,24 +1,12 @@
 
-var MAX_ANSWERS = 20;
+var MAX_ANSWERS = 5;
 var QUESTIONS = [
-  {question: "admase", answer: "ascmask"},
-  {question: "admadse", answer: "ascmask"},
-  {question: "admdase", answer: "ascmask"},
-  {question: "admadcdse", answer: "ascmask"},
-  {question: "admadasddse", answer: "ascmask"},
-  {question: "admase", answer: "ascmask"},
-  {question: "addadcsdmase", answer: "ascmask"},
-  {question: "admsdase", answer: "ascmask"},
-  {question: "admasase", answer: "ascmask"},
-  {question: "admaasdase", answer: "ascmask"},
-  {question: "adsmaese", answer: "ascmask"},
-  {question: "admase", answer: "ascmask"},
-  {question: "admase", answer: "ascmask"},
-  {question: "adadasdmase", answer: "ascmask"},
-  {question: "adsdcmase", answer: "ascmask"},
-  {question: "admfadssaase", answer: "ascmask"},
-  {question: "adamase", answer: "ascmask"}
-];
+  {question: "What is the only non-metal element that is liquid at room temperature?", answer: "Bromine"},
+  {question: "What is the only metal element that is liquid at room temperature?", answer: "Mercury"},
+  {question: "What noble gas has the least amount of protons?", answer: "Helium"},
+  {question: "What element has 82 protons?", answer: "Lead"},
+  {question: "What alkaline earth metal is most likely to have an atom with 13 neutrons?", answer: "Magnesium"}
+]
 
 // set up Argon
 var app = Argon.init();
