@@ -14,6 +14,13 @@ var SETS = {
     {question: "What alkaline earth metal is most likely to have an atom with 13 neutrons?", answer: "Magnesium"}
   ],
   "set2":[
+    {question: "not implemented!", answer: "also not implemented"},
+    {question: "not implemented!", answer: "also not implemented"},
+    {question: "not implemented!", answer: "also not implemented"},
+    {question: "not implemented!", answer: "also not implemented"},
+    {question: "not implemented!", answer: "also not implemented"},
+    {question: "not implemented!", answer: "also not implemented"},
+    {question: "not implemented!", answer: "also not implemented"},
     {question: "not implemented!", answer: "also not implemented"}
   ]
 };
@@ -103,65 +110,6 @@ window.addEventListener( 'load', init );
 //    animate();
 
 function init() {
-//  // some of the exact locations of content below have been changed slightly from the original
-//  // example so that they work reasonably on smaller mobile phone screens.
-//  for ( var i = 0; i < tableContent.length; i ++ ) {
-//
-//    var item = tableContent[ i ];
-//
-//    // var element = document.createElement( 'div' );
-//    // element.className = 'element';
-//    // element.style.backgroundColor = 'rgba(0,127,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
-//
-//    // // if it's Argon make it bright red
-//    // if (i==17) element.style.backgroundColor = 'rgba(127,0,0,1)';
-//
-//    // var number = document.createElement( 'div' );
-//    // number.className = 'number';
-//    // number.textContent = i + 1;
-//    // element.appendChild( number );
-//
-//    // var symbol = document.createElement( 'div' );
-//    // symbol.className = 'symbol';
-//    // symbol.textContent = item[ 0 ];
-//    // element.appendChild( symbol );
-//
-//    // var details = document.createElement( 'div' );
-//    // details.className = 'details';
-//    // details.innerHTML = item[ 1 ] + '<br>' + item[ 2 ];
-//    // element.appendChild( details );
-//
-//    //let element = document.createElement("div");
-//    element.className = "answer";
-//    element.textContent = "Hello world!"
-//
-//    var object = new THREE.CSS3DObject( element );
-//    object.position.x = Math.random() * 4000 - 2000;
-//    object.position.y = Math.random() * 4000 - 2000;
-//    object.position.z = Math.random() * 4000 - 2000;
-//    THREE.SceneUtils.traverseHierarchy( object, function ( object ) { object.visible = false; } );
-//    //object.matrixAutoUpdate = false;
-//    objects.push( object0 );
-//
-//    // Add each object our root node
-//    periodicTable.add(object);
-//  }
-//
-//  // table
-//
-//  for ( var i = 0; i < objects.length; i ++ ) {
-//
-//    var item = tableContent[ i ];
-//
-//    var target = new THREE.Object3D();
-//
-//    target.position.x = ( item[ 3 ] * 140 ) - 1330;
-//    target.position.y = - ( item[ 4 ] * 180 ) + 990;
-//    target.position.z = - 1000;
-//
-//    targets.table.push( target );
-//
-//  }
 
   for(var i = 0; i < MAX_ANSWERS; i++){
     var element = document.createElement("div");
@@ -336,9 +284,6 @@ function changeQuestion() {
     var current_question = Math.floor(Math.random() * QUESTIONS.length);
     document.getElementById('draw_question').innerHTML = QUESTIONS[current_question].question;
     var current_answer = QUESTIONS[current_question].answer;
-    var wrong1 = -1;
-    var wrong2 = -1;
-    var wrong3 = -1;
     
     var wrongs = [];
 
