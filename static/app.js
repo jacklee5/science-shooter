@@ -23,11 +23,11 @@ var QUESTIONS = [
 // set up Argon
 var app = Argon.init();
 
-var camera, scene, renderer, hud;
+var camera, scene, renderer, hud, raycaster;
 var periodicTable, stage;
 
 var objects = [];
-var targets = { table: [], sphere: [], helix: [], grid: [] };
+var targets = {sphere: []};
 
 // In argon, we use a custom version of the CSS3DRenderer called CSS3DArgonRenderer.
 // This version of the renderer supports stereo in a way that fits with Argon's renderEvent,
@@ -48,10 +48,9 @@ app.view.setLayers([
 // argon will pass us the camera projection details in each renderEvent callback.  This
 // is necessary to handle different devices, stereo/mono switching, etc.   argon will also
 // tell us the position of the camera to correspond to user movement
-//    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 5000 );
-//		camera.position.z = 1800;
 camera = new THREE.PerspectiveCamera();
 scene = new THREE.Scene();
+raycaster = new THREE.Raycaster();
 
 // add a new Object3D, periodicTable, that serves as the root of the periodic table in local coordinates.
 // Since the camera is moving in AR, and we want to move the content with us, but have it
@@ -84,11 +83,12 @@ function init() {
     var element = document.createElement("div");
     element.className = "answer";
     element.textContent = "Hello world!";
+    element.onclick = () => alert("hi");
 
     var object = new THREE.CSS3DObject( element );
-    object.position.x = 0;
-    object.position.y = 0;
-    object.position.z = 0;
+    object.position.x = Math.random() * 4000;
+    object.position.y = Math.random() * 4000;
+    object.position.z = Math.random() * 4000;
     objects.push( object );
 
     periodicTable.add(object);
@@ -121,28 +121,7 @@ function init() {
   var hudContainer = document.getElementById( 'hud' );
   hud.hudElements[0].appendChild(hudContainer);
 
-  // // Add button event listeners
-  // var button = document.getElementById( 'table' );
-  // button.addEventListener( 'click', function ( event ) {
-  //   transform( targets.table, 2000 );
-  // }, false );
-
-  // var button = document.getElementById( 'sphere' );
-  // button.addEventListener( 'click', function ( event ) {
-  //   transform( targets.sphere, 2000 );
-  // }, false );
-
-  // var button = document.getElementById( 'helix' );
-  // button.addEventListener( 'click', function ( event ) {
-  //   transform( targets.helix, 2000 );
-  // }, false );
-
-  // var button = document.getElementById( 'grid' );
-  // button.addEventListener( 'click', function ( event ) {
-  //   transform( targets.grid, 2000 );
-  // }, false );
-
-  transform( targets.sphere, 1000 );
+  transform( targets.sphere, 1000);
 
 }
 
@@ -178,38 +157,6 @@ function transform( targets, duration ) {
   
 }
 
-// The original demo responded to windowResize events but updating the camera.
-// argon handles this functionality and sends the appropriate information to
-// the render callback each frame.
-
-// 			function onWindowResize() {
-//
-// 				camera.aspect = window.innerWidth / window.innerHeight;
-// 				camera.updateProjectionMatrix();
-//
-// 				renderer.setSize( window.innerWidth, window.innerHeight );
-//
-// 			}
-
-// The original demo used a simple animation loop to trigger regular updates,
-// and manage the mouse virtual trackball controller.  Argon send update
-// messages, which we cache and trigger requestAnimationFrames from (see below)
-
-// 			function animate() {
-//
-// 				requestAnimationFrame( animate );
-//
-// 				TWEEN.update();
-// 				controls.update();
-//
-// 			}
-//
-// 			function render() {
-//
-// 				renderer.render( scene, camera );
-//
-// 			}
-
 // the updateEvent is called each time the 3D world should be
 // rendered, before the renderEvent.  The state of your application
 // should be updated here.  Here, we call TWEEN.update()
@@ -235,6 +182,9 @@ app.updateEvent.on(function () {
 
     // update the moving DIVs, if need be
     TWEEN.update();  
+
+    let dir = camera.getWorldDirection();
+    console.log(dir.x + ", " + dir.y + ", " + dir.z);
 });
 
 // for the CSS renderer, we want to use requestAnimationFrame to 
