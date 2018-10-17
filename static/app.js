@@ -7,11 +7,18 @@
 
 var MAX_ANSWERS = 5;
 var QUESTIONS = [
-  {question: "What is the only non-metal element that is liquid at room temperature?", answer: "Bromine"},
-  {question: "What is the only metal element that is liquid at room temperature?", answer: "Mercury"},
-  {question: "What noble gas has the least amount of protons?", answer: "Helium"},
-  {question: "What element has 82 protons?", answer: "Lead"},
-  {question: "What alkaline earth metal is most likely to have an atom with 13 neutrons?", answer: "Magnesium"}
+    {question: "What is the only non-metal element that is liquid at room temperature?", answer: "Bromine"},
+    {question: "What is the only metal element that is liquid at room temperature?", answer: "Mercury"},
+    {question: "What noble gas has the least amount of protons?", answer: "Helium"},
+    {question: "What element has 82 protons?", answer: "Lead"},
+    {question: "What alkaline earth metal is most likely to have an atom with 13 neutrons?", answer: "Magnesium"},
+    {question: "What are the visible wavelengths?", answer: "400-700nm"},
+    {question: "What is the speed of light?", answer: "3.00 * 10^6 m/s"},
+    {question: "What element is all life based on", answer: "Carbon"},
+    {question: "What is the terminal election acceptor in cell respiration?", answer: "Oxygen"},
+    {question: "What is the number chromosomes in a human male?", answer: "46"},
+    {question: "What is value of accelation due to gravity?", answer: "9.8 m/s^2"},
+    {question: "What type of light occurs just above the visible spectrum in energy?", answer: "Infrared"}
 ]
 
 // set up Argon
@@ -239,7 +246,6 @@ app.updateEvent.on(function () {
     TWEEN.update();  
 
     let dir = camera.getWorldDirection();
-    console.log(dir.x + ", " + dir.y + ", " + dir.z);
 });
 
 // for the CSS renderer, we want to use requestAnimationFrame to 
