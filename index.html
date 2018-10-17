@@ -1,6 +1,6 @@
 <!doctype html>
     <head>	
-		<title>Periodic</title>
+		<title>Science Shooter</title>
 	  	<meta name="keywords" content="argon, augmented reality, web, javascript">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	    <!-- Origin Trial Token, feature = WebVR, origin = https://argonjs.io, expires = 2017-06-06 -->
@@ -16,14 +16,28 @@
 		<div id="argon">
 			<div id="hud" style="pointer-events:auto">
 				<div id="menu">
-                    <h1 id= "draw_question"></h1>
+					<h1 id= "draw_question"></h1>
+					<div id = "start-menu">
+						<div class = "vert-center" id = "p1">
+							<h1>Science Shooter</h1>
+							<a id = "play-button">Play</a>
+							<a id = "help-button">Help</a>
+							Pick a set: <select id = "set-select">
+								<option value="set1">Set 1</option>
+								<option value="set2">Set 2</option>
+							</select>
+						</div>
+						<div class = "vert-center" id = "p2" style = "display:none">
+							<h1>Help</h1>
+							<p>After starting the game, read the questions that appear at the bottom. Then, use the crosshairs, and tap to select your answer. Try to get as many right as you can as fast as you can. Good luck!</p>
+							<a id = "back-button">Back</a>
+						</div>
+					</div>
 				</div>
 				<img id = "crosshair" src = "static/crosshairs.png" height = "60px">
 			</div>
 		</div>
-		<div id = "start-menu">
-
-		</div>
+		
 	</body>
     <script src="./static/app.js"></script>
 </html>
