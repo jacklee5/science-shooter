@@ -1,32 +1,18 @@
+
 // most importantly, argon applications should only render when asked to do so,
 // rather than in response to animation or other updates.  
 
 // The original example is in the original-three-example.html file in this directory
 
-const MAX_ANSWERS = 20;
-const QUESTIONS = [
-  {question: "admase", answer: "0ascmask"},
-  {question: "admadse", answer: "a1scmask"},
-  {question: "admdase", answer: "a2scmask"},
-  {question: "admadcdse", answer: "a3scmask"},
-  {question: "admadasddse", answer: "a4scmask"},
-  {question: "admase", answer: "a5scmask"},
-  {question: "addadcsdmase", answer: "a6scmask"},
-  {question: "admsdase", answer: "a7scmask"},
-  {question: "admasase", answer: "a8scmask"},
-  {question: "admaasdase", answer: "a9scmask"},
-  {question: "adsmaese", answer: "a10scmask"},
-  {question: "admase", answer: "a11scmask"},
-  {question: "admase", answer: "a12scmask"},
-  {question: "adadasdmase", answer: "a13scmask"},
-  {question: "adsdcmase", answer: "a14scmask"},
-  {question: "admffr4eadssaase", answer: "a15scmask"},
-  {question: "adamatgrese", answer: "a16scmask"},
-  {question: "adamgrase", answer: "a17scmask"},
-  {question: "adamasere", answer: "a18scmask"},
-  {question: "adamewrgase", answer: "a19scmask"},
-  {question: "adgkamase", answer: "a20scmask"}
-    ]
+
+var MAX_ANSWERS = 5;
+var QUESTIONS = [
+  {question: "What is the only non-metal element that is liquid at room temperature?", answer: "Bromine"},
+  {question: "What is the only metal element that is liquid at room temperature?", answer: "Mercury"},
+  {question: "What noble gas has the least amount of protons?", answer: "Helium"},
+  {question: "What element has 82 protons?", answer: "Lead"},
+  {question: "What alkaline earth metal is most likely to have an atom with 13 neutrons?", answer: "Magnesium"}
+]
 
 // set up Argon
 var app = Argon.init();
