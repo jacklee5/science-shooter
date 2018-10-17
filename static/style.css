@@ -118,3 +118,11 @@ iframe {
 	left:50%;
 	transform:translate(-50%, -50%);
 }
+#start-menu{
+	position:fixed;
+	top:0px;
+	left:0px;
+	height:100vh;
+	width:100%;
+	background:white;
+}
