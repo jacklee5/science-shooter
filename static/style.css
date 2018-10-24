@@ -108,10 +108,23 @@ iframe {
 
 /**our stuff*/
 .answer{
-	background:rgba(255,255,255,0.9);
+	background:rgba(255,255,255,0.5);
 	padding:32px;
 	font-size:112px;
 }
+
+.correct{
+    background:rgba(0,255,0,0.5);
+	padding:32px;
+	font-size:112px;
+}
+
+.wrong{
+    background:rgba(255,0,0,0.5);
+	padding:32px;
+	font-size:112px;
+}
+
 #start-menu{
 	position:fixed;
 	top:0px;
