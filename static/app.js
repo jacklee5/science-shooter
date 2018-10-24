@@ -56,6 +56,22 @@ var QUESTIONS = [];
 
 var MAX_ANSWERS = 5;
 
+//dependencies D:
+var CESIUM_BASE_URL = '../resources/cesium/';
+// grab some handles on APIs we use
+var Cesium = Argon.Cesium;
+var Cartesian3 = Argon.Cesium.Cartesian3;
+var ReferenceFrame = Argon.Cesium.ReferenceFrame;
+var JulianDate = Argon.Cesium.JulianDate;
+var CesiumMath = Argon.Cesium.CesiumMath;
+var plane = new THREE.Plane();
+var raycaster = new THREE.Raycaster();
+var mouse = new THREE.Vector2();
+var offset = new THREE.Vector3();
+var intersection = new THREE.Vector3();
+var tempPos = new THREE.Vector3();
+var INTERSECTED, SELECTED;
+
 // set up Argon
 var app = Argon.init();
 
@@ -119,7 +135,10 @@ function init() {
     var element = document.createElement("div");
     element.className = "answer";
     element.textContent = "Hello world!";
-    element.onclick = () => alert("hi");
+    element.addEventListener("touchstart", () => {
+      console.log("hi");
+    });
+    element.style.pointerEvents = "auto";
 
     var object = new THREE.CSS3DObject( element );
     object.position.x = 0;
