@@ -337,6 +337,10 @@ function changeQuestion() {
         wrongs.push(newThing);
     }
 
+    var swap = Math.floor(Math.random() * QUESTIONS.length);
+    var temp_answer = wrongs[swap];
+    wrongs[swap] = wrongs[0];
+    wrongs[0] = temp_answer;
     
     for(i = 0; i < wrongs.length; i++) {
         objects[i].elements[0].textContent = QUESTIONS[wrongs[i]].answer;
