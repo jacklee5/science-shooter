@@ -11,7 +11,11 @@ var SETS = {
     {question: "What is the only metal element that is liquid at room temperature?", answer: "Mercury"},
     {question: "What noble gas has the least amount of protons?", answer: "Helium"},
     {question: "What element has 82 protons?", answer: "Lead"},
-    {question: "What alkaline earth metal is most likely to have an atom with 13 neutrons?", answer: "Magnesium"}
+    {question: "What alkaline earth metal is most likely to have an atom with 13 neutrons?", answer: "Magnesium"},
+    {question: "What alkali metal is found in salt?", answer: "Sodium"},
+    {question: "What element is needed for something to be classified as organic?", answer: "Carbon"},
+    {question: "What element gets its symbol's name from aurum?", answer: "Gold"},
+    {question: "What alkaline earth metal is most likely to have an atom with 56 neutrons?", answer: "Barium"}
   ],
   "set2":[
     {question: "What is the only non-metal element that is liquid at room temperature?", answer: "Bromine"},
