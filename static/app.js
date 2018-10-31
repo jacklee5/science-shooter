@@ -5,6 +5,8 @@
 // The original example is in the original-three-example.html file in this directory
 
 //menu stuff
+var spookCount = 0;
+var BGM = new Audio('sfx/Jobel.mp3');
 var SETS = {
   "set1": [
     {question: "What is the only non-metal element that is liquid at room temperature?", answer: "Bromine"},
@@ -40,6 +42,8 @@ var timing = false;
   var playButton = document.getElementById("play-button");
   var backButton = document.getElementById("back-button");
   var startMenu = document.getElementById("start-menu");
+  var goodjob = document.getElementById("goodjob");
+  var badjob = document.getElementById("badjob");
   var p1 = document.getElementById("p1");
   var p2 = document.getElementById("p2");
   helpButton.addEventListener("click", () => {
@@ -57,6 +61,16 @@ var timing = false;
     changeQuestion();
     timing = true;
     startMenu.style.display = "none";
+    BGM.loop = true;
+    BGM.play();
+  });
+  goodjob.addEventListener("touchstart", () => {
+    goodjob.style.display = "none";
+    timing = true;
+  });
+  badjob.addEventListener("touchstart", () => {
+    badjob.style.display = "none";
+    timing = true;
   })
 })();
 
@@ -138,11 +152,17 @@ window.addEventListener( 'load', init );
 //    animate();
 
 function addPoint(){
-    new Audio('sfx/NotCole.mp3').play();
+    var notCole = new Audio('sfx/NotCole.mp3');
+    notCole.volume = .5;
+    notCole.play();
   document.getElementById("score").textContent = ++score;
   changeQuestion();
+  document.getElementById("goodjob").style.display = "block";
 }
-
+function removePoint(){
+  document.getElementById("score").textContent = --score;
+  changeQuestion();
+}
 function init() {
 
   for(var i = 0; i < MAX_ANSWERS; i++){
@@ -151,19 +171,25 @@ function init() {
     element.textContent = "Hello world!";
     element.addEventListener("touchstart", (e) => {
       var el = e.target;
-      console.log((el.dataset.correct));
+      timing = false;
       if(Number(el.dataset.correct)) {
         addPoint();
         spookCount = 0;
       } else {
+        removePoint();
         spookCount++;
         if (spookCount >= 10) {
             alert("It looks like you're having a bad time.");
             new Audio('sfx/Help.mp3').play();
             spookCount = 0;
         } else { 
-            new Audio('sfx/YourBad.mp3').play();
+            var yourBad = new Audio('sfx/YourBad.mp3');
+            yourBad.volume = .5;
+            yourBad.play();
         }
+
+        document.getElementById("badjob").style.display = "block";
+        changeQuestion();
       }
       
     });
@@ -357,11 +383,4 @@ setInterval(() => {
   }else{
     el.textContent = Number(el.textContent) - 1;
   }
-}, 1000)
-    
-    
-    
-    
-    
-    
-    
+}, 1000);
