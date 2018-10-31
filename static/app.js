@@ -165,10 +165,10 @@ function init() {
 
   var vector = stage.position;
 
-  for ( var i = 0; i < objects.length; i ++ ) {
+  for ( var i = 0; i < MAX_ANSWERS; i ++ ) {
 
-    var phi = Math.acos( -1 + ( 2 * i ) / objects.length );
-    var theta = Math.sqrt( objects.length * Math.PI ) * phi;
+    var phi = Math.acos( -1 + ( 2 * i ) / MAX_ANSWERS );
+    var theta = Math.sqrt( MAX_ANSWERS * Math.PI ) * phi;
     var target = new THREE.Object3D();
 
     target.position.x = 800 * Math.cos( theta ) * Math.sin( phi );
@@ -180,21 +180,18 @@ function init() {
     targets.sphere.push( target );
 
   }
-    
-  changeQuestion();
 
   // move the menu to the Argon HUD.  We don't duplicate it because we only
   // use it in mono mode
   var hudContainer = document.getElementById( 'hud' );
   hud.hudElements[0].appendChild(hudContainer);
 
-  transform( targets.sphere, 1000);
+  transform(targets.sphere, 1000);
 
 }
 
 function transform( targets, duration ) {
   TWEEN.removeAll();
-
       for ( var i = 0; i < objects.length; i ++ ) {
 
         var object = objects[ i ];
@@ -311,45 +308,28 @@ app.renderEvent.on(function () {
 //document.getElementById('draw_question').innerHTML = question;
 //var current_answer
 
+function changeQuestion(){
+  console.log("changing the question");
+  if(QUESTIONS.length === 0) return;
+  var q = Math.floor(Math.random() * QUESTIONS.length);
+  document.getElementById("draw_question").innerHTML = QUESTIONS[q].question;
+  var a = QUESTIONS[q].answer;
 
-function changeQuestion() {
-    if(QUESTIONS.length === 0) return;
-    var current_question = Math.floor(Math.random() * QUESTIONS.length);
-    document.getElementById('draw_question').innerHTML = QUESTIONS[current_question].question;
-    var current_answer = QUESTIONS[current_question].answer;
-    
-    var wrongs = [];
-
-    wrongs.push(current_question);
-    
-    for(i = 1; i < MAX_ANSWERS; i++) {
-        var check = false;
-        while (!check) {
-            check = true;
-            var newThing = Math.floor(Math.random() * (QUESTIONS.length));
-            for (j = 0; j < wrongs.length; j++) {
-                if (newThing === wrongs[j]) {
-                    check = false;
-                }
-            }
-        }
-        
-        wrongs.push(newThing);
+  for(var i = 0; i < MAX_ANSWERS; i++){
+    var ans = QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)].answer;
+    console.log(ans);
+    while(ans === a){
+      ans = QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)].answer;
     }
+    console.log(ans);
+    objects[i].elements[0].textContent = ans;
+    objects[i].elements[0].dataset.correct = "0";
+  }
 
-    var swap = Math.floor(Math.random() * QUESTIONS.length);
-    var temp_answer = wrongs[swap];
-    wrongs[swap] = wrongs[0];
-    wrongs[0] = temp_answer;
-    
-    for(i = 0; i < wrongs.length; i++) {
-        objects[i].elements[0].textContent = QUESTIONS[wrongs[i]].answer;
-        objects[i].elements[0].dataset.correct = "0";
-    }
-
-    objects[0].elements[0].textContent = current_answer;
-    objects[0].elements[0].dataset.correct = "1";
-    console.log(current_answer);
+  let el = objects[Math.floor(Math.random() * MAX_ANSWERS)].elements[0];
+  el.textContent = a;
+  el.dataset.correct = "1";
+  console.log(objects.map(x => x.elements[0].textContent));
 }
     
     
