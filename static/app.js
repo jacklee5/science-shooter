@@ -155,7 +155,10 @@ function addPoint(){
   changeQuestion();
   document.getElementById("goodjob").style.display = "block";
 }
-
+function removePoint(){
+  document.getElementById("score").textContent = --score;
+  changeQuestion();
+}
 function init() {
 
   for(var i = 0; i < MAX_ANSWERS; i++){
@@ -169,6 +172,7 @@ function init() {
         addPoint();
         spookCount = 0;
       } else {
+        removePoint();
         spookCount++;
         if (spookCount >= 10) {
             alert("It looks like you're having a bad time.");
@@ -375,11 +379,4 @@ setInterval(() => {
   }else{
     el.textContent = Number(el.textContent) - 1;
   }
-}, 1000)
-    
-    
-    
-    
-    
-    
-    
+}, 1000);
