@@ -81,6 +81,8 @@ var periodicTable, stage;
 var objects = [];
 var targets = {sphere: []};
 
+var score = 0;
+
 // In argon, we use a custom version of the CSS3DRenderer called CSS3DArgonRenderer.
 // This version of the renderer supports stereo in a way that fits with Argon's renderEvent,
 // especially supporting the user providing multiple divs for the potential multiple viewports
@@ -129,14 +131,22 @@ window.addEventListener( 'load', init );
 // requestAnimationFrame update cycle.  We don't do that with Argon
 //    animate();
 
+function addPoint(){
+  document.getElementById("score").textContent = ++score;
+  changeQuestion();
+}
+
 function init() {
 
   for(var i = 0; i < MAX_ANSWERS; i++){
     var element = document.createElement("div");
     element.className = "answer";
     element.textContent = "Hello world!";
-    element.addEventListener("touchstart", () => {
-      console.log("hi");
+    element.addEventListener("touchstart", (e) => {
+      var el = e.target;
+      console.log((el.dataset.correct));
+      if(Number(el.dataset.correct)) addPoint();
+      
     });
     element.style.pointerEvents = "auto";
 
@@ -326,13 +336,16 @@ function changeQuestion() {
         
         wrongs.push(newThing);
     }
-    
-    objects[0].elements[0].textContent = current_answer;
 
     
     for(i = 0; i < wrongs.length; i++) {
         objects[i].elements[0].textContent = QUESTIONS[wrongs[i]].answer;
+        objects[i].elements[0].dataset.correct = "0";
     }
+
+    objects[0].elements[0].textContent = current_answer;
+    objects[0].elements[0].dataset.correct = "1";
+    console.log(current_answer);
 }
     
     
