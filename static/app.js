@@ -5,6 +5,8 @@
 // The original example is in the original-three-example.html file in this directory
 
 //menu stuff
+var spookCount = 0;
+var BGM = new Audio('sfx/Jobel.mp3');
 var SETS = {
   "set1": [
     {question: "What is the only non-metal element that is liquid at room temperature?", answer: "Bromine"},
@@ -51,6 +53,8 @@ var QUESTIONS = [];
     console.log(QUESTIONS);
     changeQuestion();
     startMenu.style.display = "none";
+    BGM.loop = true;
+    BGM.play();
   })
 })();
 
@@ -132,7 +136,9 @@ window.addEventListener( 'load', init );
 //    animate();
 
 function addPoint(){
-    new Audio('sfx/NotCole.mp3').play();
+    var notCole = new Audio('sfx/NotCole.mp3');
+    notCole.volume = .5;
+    notCole.play();
   document.getElementById("score").textContent = ++score;
   changeQuestion();
 }
@@ -156,7 +162,9 @@ function init() {
             new Audio('sfx/Help.mp3').play();
             spookCount = 0;
         } else { 
-            new Audio('sfx/YourBad.mp3').play();
+            var yourBad = new Audio('sfx/YourBad.mp3');
+            yourBad.volume = .5;
+            yourBad.play();
         }
       }
       
