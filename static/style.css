@@ -117,7 +117,6 @@ iframe {
     display: none;
     background:rgba(0,200,0,1);
     color:rgba(255,255,255,1);
-	padding:32px;
 	font-size:112px;
 }
 
@@ -125,7 +124,6 @@ iframe {
     display: none;
     background:rgba(200,0,0,1);
     color:rgba(255,255,255,1);
-	padding:32px;
 	font-size:112px;
 }
 
