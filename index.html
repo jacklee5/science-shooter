@@ -18,7 +18,7 @@
 				<div id="menu">
 					<h1 id= "draw_question"></h1>
 					<p style = "position:fixed;top:8px;left:8px;background:rgba(255,255,255,0.3);display:inline-block;margin:0;padding:8px;">Score: <span id = "score">0</span></p>
-					<div id = "start-menu">
+					<p style = "position:fixed;top:8px;right:8px;background:rgba(255,255,255,0.3);display:inline-block;margin:0;padding:8px;">Time: <span id = "time">60</span></p>					<div id = "start-menu" class = "page">
 						<div class = "vert-center" id = "p1">
 							<h1>Science Shooter</h1>
 							<a id = "play-button">Play</a>
@@ -34,6 +34,25 @@
 							<a id = "back-button">Back</a>
 						</div>
 					</div>
+					<div id = "gameover" class = "page">
+						<div class = "vert-center">
+							<h1>Time's Up!</h1>
+							<p>You scored <span id = "final-score"></span> points!</p>
+							<a href = "/">Play Again</a>
+						</div>
+					</div>
+                    <div id = "goodjob" class = "page">
+                        <div class = "vert-center">
+							<h1>Correct!</h1>
+							<p>Tap to continue...</p>
+                        </div>
+                    </div>
+                    <div id = "badjob" class = "page">
+                        <div class = "vert-center">
+							<h1>Incorrect...</h1>
+							<p>Tap to continue...</p>
+                        </div>
+                    </div>
 				</div>
 			</div>
 		</div>

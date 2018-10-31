@@ -31,12 +31,15 @@ var SETS = {
   ]
 };
 var QUESTIONS = [];
+var timing = false;
 
 (() => {
   var helpButton = document.getElementById("help-button");
   var playButton = document.getElementById("play-button");
   var backButton = document.getElementById("back-button");
   var startMenu = document.getElementById("start-menu");
+  var goodjob = document.getElementById("goodjob");
+  var badjob = document.getElementById("badjob");
   var p1 = document.getElementById("p1");
   var p2 = document.getElementById("p2");
   helpButton.addEventListener("click", () => {
@@ -52,9 +55,18 @@ var QUESTIONS = [];
     QUESTIONS = SETS[setSelect.options[setSelect.selectedIndex].value];
     console.log(QUESTIONS);
     changeQuestion();
+    timing = true;
     startMenu.style.display = "none";
     BGM.loop = true;
     BGM.play();
+  });
+  goodjob.addEventListener("touchstart", () => {
+    goodjob.style.display = "none";
+    timing = true;
+  });
+  badjob.addEventListener("touchstart", () => {
+    badjob.style.display = "none";
+    timing = true;
   })
 })();
 
@@ -141,6 +153,7 @@ function addPoint(){
     notCole.play();
   document.getElementById("score").textContent = ++score;
   changeQuestion();
+  document.getElementById("goodjob").style.display = "block";
 }
 
 function init() {
@@ -151,7 +164,7 @@ function init() {
     element.textContent = "Hello world!";
     element.addEventListener("touchstart", (e) => {
       var el = e.target;
-      console.log((el.dataset.correct));
+      timing = false;
       if(Number(el.dataset.correct)) {
         addPoint();
         spookCount = 0;
@@ -166,6 +179,9 @@ function init() {
             yourBad.volume = .5;
             yourBad.play();
         }
+
+        document.getElementById("badjob").style.display = "block";
+        changeQuestion();
       }
       
     });
@@ -330,7 +346,6 @@ app.renderEvent.on(function () {
 //var current_answer
 
 function changeQuestion(){
-  console.log("changing the question");
   if(QUESTIONS.length === 0) return;
   var q = Math.floor(Math.random() * QUESTIONS.length);
   document.getElementById("draw_question").innerHTML = QUESTIONS[q].question;
@@ -338,11 +353,9 @@ function changeQuestion(){
 
   for(var i = 0; i < MAX_ANSWERS; i++){
     var ans = QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)].answer;
-    console.log(ans);
     while(ans === a){
       ans = QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)].answer;
     }
-    console.log(ans);
     objects[i].elements[0].textContent = ans;
     objects[i].elements[0].dataset.correct = "0";
   }
@@ -350,8 +363,19 @@ function changeQuestion(){
   let el = objects[Math.floor(Math.random() * MAX_ANSWERS)].elements[0];
   el.textContent = a;
   el.dataset.correct = "1";
-  console.log(objects.map(x => x.elements[0].textContent));
 }
+
+//timer stuff
+setInterval(() => {
+  if(!timing) return;
+  let el = document.getElementById("time");
+  if(!Number(el.textContent)){
+    document.getElementById("gameover").style.display = "block";
+    document.getElementById("final-score").textContent = score;
+  }else{
+    el.textContent = Number(el.textContent) - 1;
+  }
+}, 1000)
     
     
     
