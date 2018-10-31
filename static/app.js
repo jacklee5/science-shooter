@@ -132,6 +132,7 @@ window.addEventListener( 'load', init );
 //    animate();
 
 function addPoint(){
+    new Audio('sfx/NotCole.mp3').play();
   document.getElementById("score").textContent = ++score;
   changeQuestion();
 }
@@ -145,7 +146,19 @@ function init() {
     element.addEventListener("touchstart", (e) => {
       var el = e.target;
       console.log((el.dataset.correct));
-      if(Number(el.dataset.correct)) addPoint();
+      if(Number(el.dataset.correct)) {
+        addPoint();
+        spookCount = 0;
+      } else {
+        spookCount++;
+        if (spookCount >= 10) {
+            alert("It looks like you're having a bad time.");
+            new Audio('sfx/Help.mp3').play();
+            spookCount = 0;
+        } else { 
+            new Audio('sfx/YourBad.mp3').play();
+        }
+      }
       
     });
     element.style.pointerEvents = "auto";
