@@ -56,11 +56,11 @@ var timing = false;
     timing = true;
     startMenu.style.display = "none";
   });
-  goodjob.addEventListener("click", () => {
+  goodjob.addEventListener("touchstart", () => {
     goodjob.style.display = "none";
     timing = true;
   });
-  badjob.addEventListener("click", () => {
+  badjob.addEventListener("touchstart", () => {
     badjob.style.display = "none";
     timing = true;
   })
