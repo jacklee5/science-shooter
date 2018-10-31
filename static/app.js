@@ -29,6 +29,7 @@ var SETS = {
   ]
 };
 var QUESTIONS = [];
+var timing = false;
 
 (() => {
   var helpButton = document.getElementById("help-button");
@@ -50,6 +51,7 @@ var QUESTIONS = [];
     QUESTIONS = SETS[setSelect.options[setSelect.selectedIndex].value];
     console.log(QUESTIONS);
     changeQuestion();
+    timing = true;
     startMenu.style.display = "none";
   })
 })();
@@ -309,7 +311,6 @@ app.renderEvent.on(function () {
 //var current_answer
 
 function changeQuestion(){
-  console.log("changing the question");
   if(QUESTIONS.length === 0) return;
   var q = Math.floor(Math.random() * QUESTIONS.length);
   document.getElementById("draw_question").innerHTML = QUESTIONS[q].question;
@@ -317,11 +318,9 @@ function changeQuestion(){
 
   for(var i = 0; i < MAX_ANSWERS; i++){
     var ans = QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)].answer;
-    console.log(ans);
     while(ans === a){
       ans = QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)].answer;
     }
-    console.log(ans);
     objects[i].elements[0].textContent = ans;
     objects[i].elements[0].dataset.correct = "0";
   }
@@ -329,8 +328,19 @@ function changeQuestion(){
   let el = objects[Math.floor(Math.random() * MAX_ANSWERS)].elements[0];
   el.textContent = a;
   el.dataset.correct = "1";
-  console.log(objects.map(x => x.elements[0].textContent));
 }
+
+//timer stuff
+setInterval(() => {
+  if(!timing) return;
+  let el = document.getElementById("time");
+  if(!Number(el.textContent)){
+    document.getElementById("gameover").style.display = "block";
+    document.getElementById("final-score").textContent = score;
+  }else{
+    el.textContent = Number(el.textContent) - 1;
+  }
+}, 1000)
     
     
     
