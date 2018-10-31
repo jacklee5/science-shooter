@@ -36,6 +36,8 @@ var timing = false;
   var playButton = document.getElementById("play-button");
   var backButton = document.getElementById("back-button");
   var startMenu = document.getElementById("start-menu");
+  var goodjob = document.getElementById("goodjob");
+  var badjob = document.getElementById("badjob");
   var p1 = document.getElementById("p1");
   var p2 = document.getElementById("p2");
   helpButton.addEventListener("click", () => {
@@ -53,6 +55,14 @@ var timing = false;
     changeQuestion();
     timing = true;
     startMenu.style.display = "none";
+  });
+  goodjob.addEventListener("click", () => {
+    goodjob.style.display = "none";
+    timing = true;
+  });
+  badjob.addEventListener("click", () => {
+    badjob.style.display = "none";
+    timing = true;
   })
 })();
 
@@ -134,9 +144,10 @@ window.addEventListener( 'load', init );
 //    animate();
 
 function addPoint(){
-    new Audio('sfx/NotCole.mp3').play();
+  new Audio('sfx/NotCole.mp3').play();
   document.getElementById("score").textContent = ++score;
   changeQuestion();
+  document.getElementById("goodjob").style.display = "block";
 }
 
 function init() {
@@ -147,7 +158,7 @@ function init() {
     element.textContent = "Hello world!";
     element.addEventListener("touchstart", (e) => {
       var el = e.target;
-      console.log((el.dataset.correct));
+      timing = false;
       if(Number(el.dataset.correct)) {
         addPoint();
         spookCount = 0;
@@ -160,6 +171,9 @@ function init() {
         } else { 
             new Audio('sfx/YourBad.mp3').play();
         }
+
+        document.getElementById("badjob").style.display = "block";
+        changeQuestion();
       }
       
     });
