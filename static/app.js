@@ -7,7 +7,26 @@
 //menu stuff
 var spookCount = 0;
 var used_questions = [];
-var BGM = new Audio('sfx/Jobel.mp3');
+var sounds = {};
+//load sounds
+(function(){
+  var soundFiles = ["static/sfx/Help.mp3", "static/sfx/Jobel.mp3", "static/sfx/NotCole.mp3", "static/sfx/YourBad.mp3"];
+  for(var i = 0; i < soundFiles.length; i++){
+    sounds[soundFiles[i]] = new Audio();
+    sounds[soundFiles[i]].type = "audio/mpeg";
+    sounds[soundFiles[i]].src = soundFiles[i];
+  }
+})()
+var playSound = function(file, volume, loop) {
+  var snd1 = sounds[file];
+  snd1.pause();
+  snd1.currentTime = 0;
+  snd1.volume = volume || 1;
+  snd1.loop = loop || false;
+  var src1 = document.createElement("source");
+  snd1.appendChild(src1);
+  snd1.play();
+}
 var SETS = {
   "set1": [
     {question: "What is the only non-metal element that is liquid at room temperature?", answer: "Bromine"},
@@ -37,7 +56,7 @@ var SETS = {
 };
 var QUESTIONS = [];
 var timing = false;
-
+//ok
 (() => {
   var helpButton = document.getElementById("help-button");
   var playButton = document.getElementById("play-button");
@@ -62,8 +81,7 @@ var timing = false;
     changeQuestion();
     timing = true;
     startMenu.style.display = "none";
-    BGM.loop = true;
-    BGM.play();
+    playSound("static/sfx/Jobel.mp3",1,true);
   });
   goodjob.addEventListener("touchstart", () => {
     goodjob.style.display = "none";
@@ -153,9 +171,7 @@ window.addEventListener( 'load', init );
 //    animate();
 
 function addPoint(){
-    var notCole = new Audio('sfx/NotCole.mp3');
-    notCole.volume = .5;
-    notCole.play();
+  playSound("static/sfx/NotCole.mp3", 0.5);
   document.getElementById("score").textContent = ++score;
   changeQuestion();
   document.getElementById("goodjob").style.display = "block";
@@ -181,12 +197,10 @@ function init() {
         spookCount++;
         if (spookCount >= 10) {
             alert("It looks like you're having a bad time.");
-            new Audio('sfx/Help.mp3').play();
+            playSound("static/sfx/Help.mp3");
             spookCount = 0;
         } else { 
-            var yourBad = new Audio('sfx/YourBad.mp3');
-            yourBad.volume = .5;
-            yourBad.play();
+            playSound("static/sfx/YourBad.mp3", 0.5);
         }
 
         document.getElementById("badjob").style.display = "block";
