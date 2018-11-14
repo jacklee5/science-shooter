@@ -37,21 +37,54 @@ var SETS = {
     {question: "What alkali metal is found in salt?", answer: "Sodium"},
     {question: "What element is needed for something to be classified as organic?", answer: "Carbon"},
     {question: "What element gets its symbol's name from aurum?", answer: "Gold"},
-    {question: "What alkaline earth metal is most likely to have an atom with 56 neutrons?", answer: "Barium"}
+    {question: "What alkaline earth metal is most likely to have an atom with 56 neutrons?", answer: "Barium"},
+    {question: "What element has only 1 proton?", answer: "Hydrogen"},
+    {question: "What vertical columns called", answer: "Groups"},
+    {question: "What horizontal rows called", answer: "Periods"},
+    {question: "What nonmetal has 6 protons?", answer: "Carbon"},
+    {question: "What noble gas has the chemical symbol Ar?", answer: "Argon"},
+    {question: "What element is the most electronegative?", answer: "Fluorine"}
   ],
   "set2":[
-    {question: "What is the only non-metal element that is liquid at room temperature?", answer: "Bromine"},
-    {question: "What is the only metal element that is liquid at room temperature?", answer: "Mercury"},
-    {question: "What noble gas has the least amount of protons?", answer: "Helium"},
-    {question: "What element has 82 protons?", answer: "Lead"},
-    {question: "What alkaline earth metal is most likely to have an atom with 13 neutrons?", answer: "Magnesium"},
-    {question: "What are the visible wavelengths?", answer: "400-700nm"},
-    {question: "What is the speed of light?", answer: "3.00 * 10^6 m/s"},
     {question: "What element is all life based on", answer: "Carbon"},
     {question: "What is the terminal election acceptor in cell respiration?", answer: "Oxygen"},
     {question: "What is the number chromosomes in a human male?", answer: "46"},
-    {question: "What is value of accelation due to gravity?", answer: "9.8 m/s^2"},
-    {question: "What type of light occurs just above the visible spectrum in energy?", answer: "Infrared"}
+    {question: "What is the mitochondria?", answer: "The powerhouse of the cell."},
+    {question: "What is parasitism?", answer: "A relationship where only the parasite benefits and not the host."},
+    {question: "What do plants use to get energy from the sun?", answer: "Chlorophylls"},
+    {question: "Movement against the concentration gradient using energy is what?", answer: "Active transport."},
+    {question: "How large is a platelet?", answer: "Roughly 2 microns."},
+    {question: "What is an example of a C4 plant?", answer: "Corn."},
+    {question: "What types of plants have lots of carbohydrates?", answer: "Starchy plants."},
+    {question: "What is the start codon?", answer: "AUG"},
+    {question: "What means water-loving?", answer: "Hydrophilic"},
+    {question: "What is the first step of cellular respiration?", answer: "Glycolysis"},
+    {question: "What is done in cellular respiration without oxygen?", answer: "Fermentation"},
+    {question: "", answer: ""},
+    {question: "", answer: ""},
+    {question: "", answer: ""},
+    {question: "", answer: ""}
+  ],
+  "set3":[
+      {question: "What type of energy is based on temperature?", answer: "Thermal"},
+      {question: "What type of energy is based on motion?", answer: "Mechanical"},
+      {question: "What type of energy is based on stretching?", answer: "Elastic"},
+      {question: "What type of energy is based on hearing?", answer: "Sonic"},
+      {question: "What is a force?", answer: "A push or pull."},
+      {question: "What is centripetal force?", answer: "Pushes object in a circle."},
+      {question: "What is inertia.", answer: "A resistance to change in motion."},
+      {question: "What is mass", answer: "The matter in an object."},
+      {question: "What is speed?", answer: "Distance over time."},
+      {question: "What is acceleration?", answer: "Delta velocity over delta time."},
+      {question: "What is angular velocity?", answer: "Delta theta over delta time."},
+      {question: "What is angular acceleration", answer: "Delta angular velocity over delta time."},
+      {question: "What is density?", answer: "Mass over volume."},
+      {question: "What is the ideal gas law?", answer: "PV = nRT"},
+      {question: "What is freuquency?", answer: "1 over time."},
+      {question: "What are the visible wavelengths?", answer: "400-700nm"},
+      {question: "What is the speed of light?", answer: "3.00 * 10^6 m/s"},
+      {question: "What is value of accelation due to gravity?", answer: "9.8 m/s^2"},
+      {question: "What type of light occurs just above the visible spectrum in energy?", answer: "Infrared"}
   ]
 };
 var QUESTIONS = [];
@@ -93,7 +126,7 @@ var timing = false;
   })
 })();
 
-var MAX_ANSWERS = 5;
+var MAX_ANSWERS = 10;
 
 //dependencies D:
 var CESIUM_BASE_URL = '../resources/cesium/';
