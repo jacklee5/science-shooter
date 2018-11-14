@@ -37,7 +37,7 @@ var SETS = {
 };
 var QUESTIONS = [];
 var timing = false;
-
+//ok
 (() => {
   var helpButton = document.getElementById("help-button");
   var playButton = document.getElementById("play-button");
