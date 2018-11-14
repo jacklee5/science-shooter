@@ -6,6 +6,7 @@
 
 //menu stuff
 var spookCount = 0;
+var used_questions = [];
 var BGM = new Audio('sfx/Jobel.mp3');
 var SETS = {
   "set1": [

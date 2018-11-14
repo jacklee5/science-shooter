@@ -125,6 +125,20 @@ iframe {
     color:rgba(255,255,255,1);
 }
 
+#replay-button {
+    color:black;
+	display:block;
+	padding:16px;
+	background:rgba(0,0,0,0.1);
+	margin:16px;
+    text-align: center;
+    pointer-events: auto;
+    visibility: visible;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    font-family: Arial;
+}
+
 .page{
 	position:fixed;
 	top:0px;
