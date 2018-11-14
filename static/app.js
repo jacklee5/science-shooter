@@ -357,9 +357,36 @@ app.renderEvent.on(function () {
 function changeQuestion(){
   if(QUESTIONS.length === 0) return;
   var q = Math.floor(Math.random() * QUESTIONS.length);
-  document.getElementById("draw_question").innerHTML = QUESTIONS[q].question;
   var a = QUESTIONS[q].answer;
 
+  var redo = false;
+    
+  console.log(used_questions.length);
+  console.log(QUESTIONS.length);
+  if (used_questions.length == QUESTIONS.length) {
+    used_questions = [];
+    used_questions.push(a);
+    redo = true;
+  }
+    
+  while (!redo) {
+      var con = true;
+      for (var x = 0; x < used_questions.length; x++) {
+          if (a == used_questions[x]) {
+              q = Math.floor(Math.random() * QUESTIONS.length);
+              a = QUESTIONS[q].answer;
+              con = false;
+              break;
+          }
+      }
+      if (con) {
+          used_questions.push(a);
+          break;
+      }
+  }
+  
+  document.getElementById("draw_question").innerHTML = QUESTIONS[q].question;
+    
   for(var i = 0; i < MAX_ANSWERS; i++){
     var ans = QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)].answer;
     while(ans === a){
